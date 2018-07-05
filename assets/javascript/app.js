@@ -54,7 +54,7 @@ var questionsArray = [
 var questLength = questionsArray.length;
 
 function nextQuestion () {
-  for (i = 0; i < questLength;) {
+  for (i = 0; i < questLength; i++) {
 
     //assings the question to the variable quest
     var quest = questionsArray[i].question;
@@ -63,8 +63,7 @@ function nextQuestion () {
     $("#inquiry").append("<p>" + quest + "</p>");
 
     //prints one question until the next question button is clicked
-}
-}
+}}
 
 //This starts and stops the quiz
 $(document).ready(function() {
