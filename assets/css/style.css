@@ -25,6 +25,10 @@ hr {
     margin-bottom: 0%;
 }
 
+button {
+    margin-top: 10px;
+}
+
 .container {
     background: white;
 }
@@ -32,4 +36,12 @@ hr {
 #gameContainer {
     overflow: hidden;
     display: none;
+}
+
+#next {
+    text-align: center;
+}
+
+#nextQuestion {
+    align-content: center;
 }
