@@ -53,17 +53,19 @@ var questionsArray = [
 // assings the length of the questionsArray to a var
 var questLength = questionsArray.length;
 
+
+//prints one question until the right choice is clicked or the timer runs out
 function nextQuestion () {
-  for (i = 0; i < questLength; i++) {
 
     //assings the question to the variable quest
-    var quest = questionsArray[i].question;
+    var quest = questionsArray[numQuestion].question;
 
     //prints the questions to the inquiry id
     $("#inquiry").append("<p>" + quest + "</p>");
 
-    //prints one question until the next question button is clicked
-}}
+    //adds to the numquestion variable to print the next question when ran again
+    numQuestion++;
+}
 
 //This starts and stops the quiz
 $(document).ready(function() {
