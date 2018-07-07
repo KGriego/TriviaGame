@@ -66,36 +66,39 @@ function nextQuestion () {
 
     //prints the questions to the inquiry id
     $("#inquiry").append("<p>" + quest + "</p>");
+
+    for (optionsNumber = 0; optionsNumber < optionsLength; optionsNumber++) {
+  
+      //assings the choices from the array to the variable options
+      var options = questionsArray[numQuestion].choices[optionsNumber];
+    
+      //writes the options to the optionsContainer
+      $("#optionsContainer").append("<button>" + options + "</button> <br>");
+    }
+    numQuestion++;
 }
 
-function answerOptions () {
+// function answerOptions () {
 
-  // assings the choices from the array to the variable options
-  // var options = questionsArray[numQuestion].choices[optionsNumber];
-  // console.log(options);
+//   for (optionsNumber = 0; optionsNumber < optionsLength; optionsNumber++) {
+  
+//     //assings the choices from the array to the variable options
+//     var options = questionsArray[numQuestion].choices[optionsNumber];
+//     console.log(options);
+  
+//     //writes the options to the optionsContainer
+//     $("#optionsContainer").append("<button>" + options + "</button> <br>");
+    
+// }};
 
-  // //writes the options to the optionsContainer
-  // $("#optionsContainer").html("<button>" + options + "</button>")
 
-  // //adds + 1 to the optionsnumber to print the options
-  // optionsNumber++;
 
-  // //adds to the numquestion variable to print the next question when ran again
-  // numQuestion++;
-
+if (start.on("click")) {
+  nextQuestion();
+  console.log("You clicked next");
+} else if (next.on("click")) {
+  nextQuestion();
 }
-
-
-
-for (optionsNumber = 0; optionsNumber < optionsLength; optionsNumber++) {
-
-  //assings the choices from the array to the variable options
-  var options = questionsArray[numQuestion].choices[optionsNumber];
-  console.log(options);
-
-  //writes the options to the optionsContainer
-  $("#optionsContainer").append("<button>" + options + "</button> <br>");
-  };
 
 //This starts and stops the quiz
 $(document).ready(function() {
@@ -111,9 +114,4 @@ $(document).ready(function() {
     });
 
     //Prints a question to the the paragraph inquiry
-    if ($("#startQuiz").on("click") || $("#next") .on("click")) {
-
-        nextQuestion();
-        answerOptions();
-    };  
 });

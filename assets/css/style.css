@@ -43,5 +43,5 @@ button {
 }
 
 #nextQuestion {
-    align-content: center;
+    justify-content: center;
 }
