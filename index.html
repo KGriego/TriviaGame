@@ -14,20 +14,20 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container rounded-bottom">
         <div class="row">
-            <div class="col-sm-8 col-md-10">
+            <div class="col-sm-12 col-md-12">
                 <h1>
                     Mario Trivia Game!
                 </h1>
             </div>
         </div>
     </div>
-    <div id="gameInstructions" class="container mt-4 center">
+    <div id="gameInstructions" class="container rounded mt-4 center">
         <div class="row">
-            <div class="col-sm-8 col-md-10">
+            <div class="col-sm-12 col-md-12">
                 <p class="pt-3">
-                    This is a trivia game about Mario. You will have 15 seconds to answer each question.
+                    This is a trivia game about Mario. You will have 5 minutes to comeplete the quiz.
                 </p>
                 <hr>
                 <p class="pt-3">
@@ -36,12 +36,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6 col-md-10 center">
-                <button id="startQuiz">Start the Quizzzzzzz!!</button>
+            <div class="col-sm-12 col-md-12 center">
+                <button id="startQuiz" class="btn btn-light mb-3">Start the Quizzzzzzz!!</button>
             </div>
         </div>
     </div>
-    <div id="gameContainer" class="container mt-4">
+    <div id="gameContainer" class="container rounded mt-4">
         <div class="row mt-4">
             <div class="col-sm-8 col-md-10 pt-3">
                 <p id="inquiry"></p>
@@ -52,12 +52,18 @@
         </div>
         <hr>
         <div class="row">
-            <div id="optionsContainer" class="col-sm-8 col-md-10"></div>
+            <div id="optionsContainer" class="col-sm-8 col-md-10 mt-3"></div>
         </div>
         <div id="nextQuestion" class="row">
-            <button id="next">Next question</button>
+            <div class="col-lg-6 col-md-3 center">
+                <button id="next" class="btn btn-light mb-3">Next question</button>
+            </div>
+            <div class="col-lg-6 col-md-3 center"> 
+                <button id="submitQuiz" class="btn btn-light mb-3">Submit Quiz</button>
+            </div>
         </div>
     </div>
+    <div id="resultsContainer" class="container rounded mt-4"></div>
     <script src="assets/javascript/app.js"></script>
 </body>
 
