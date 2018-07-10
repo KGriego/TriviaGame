@@ -33,6 +33,10 @@ button {
     background: white;
 }
 
+.choices {
+    margin-right: 10px;
+}
+
 #gameContainer {
     overflow: hidden;
     display: none;
@@ -44,4 +48,9 @@ button {
 
 #nextQuestion {
     justify-content: center;
+}
+
+#resultsContainer {
+    background: #fff;
+    background-color: #fff;
 }
