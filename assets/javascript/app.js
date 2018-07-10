@@ -1,4 +1,4 @@
-//Defines the variables used throughout
+//stores how many correct and wrong answered question
 var correct = 0;
 var wrong = 0;
 
@@ -9,8 +9,9 @@ var nextQuestionTimer;
 var numQuestion = 0;
 var optionsNumber = 0;
 
-var start = $("#startQuiz");
-var next = $("#next");
+//assigns variables to elements from the html page for easier access
+var $start = $("#startQuiz");
+var $next = $("#next");
 
 var questionsArray = [
   {
@@ -53,10 +54,15 @@ var questionsArray = [
 
 // assings the length of the questionsArray to a var
 var questLength = questionsArray.length;
-console.log(questLength);
+console.log("questLength = questionsArray.length: " + questLength);
+
+//assings the length of the choices to optionsLength
 var optionsLength = questionsArray[numQuestion].choices.length;
-console.log(optionsLength);
-// var options = questionsArray[numQuestion].choices[optionsNumber];
+console.log("optionsLength = questionsArray[numQuestion].choices.length: " + optionsLength);
+
+//assigns the answer value to the correctAnswer variable
+var correctAnswer = questionsArray[numQuestion].answer;
+console.log("correctAnswer = questionsArray[numQuestion].answer: " + correctAnswer);
 
 //prints one question until the right choice is clicked or the timer runs out
 function nextQuestion () {
@@ -67,51 +73,65 @@ function nextQuestion () {
     //prints the questions to the inquiry id
     $("#inquiry").append("<p>" + quest + "</p>");
 
-    for (optionsNumber = 0; optionsNumber < optionsLength; optionsNumber++) {
+ }
   
-      //assings the choices from the array to the variable options
-      var options = questionsArray[numQuestion].choices[optionsNumber];
+function answerOptions() {
+      for (optionsNumber = 0; optionsNumber < optionsLength; optionsNumber++) {
     
-      //writes the options to the optionsContainer
-      $("#optionsContainer").append("<button>" + options + "</button> <br>");
-    }
-    numQuestion++;
-}
+        //assings the choices from the array to the variable options
+        var options = questionsArray[numQuestion].choices[optionsNumber];
+      
+        //writes the options to the optionsContainer
+        $("#optionsContainer").append("<input type='radio' class='choices' id=" + optionsNumber + ">" + options +  "<br>");
+      }
+      numQuestion++;
+};
 
-// function answerOptions () {
+//get the correct answer from the html written
 
-//   for (optionsNumber = 0; optionsNumber < optionsLength; optionsNumber++) {
-  
-//     //assings the choices from the array to the variable options
-//     var options = questionsArray[numQuestion].choices[optionsNumber];
-//     console.log(options);
-  
-//     //writes the options to the optionsContainer
-//     $("#optionsContainer").append("<button>" + options + "</button> <br>");
-    
-// }};
-
-
-
-if (start.on("click")) {
-  nextQuestion();
-  console.log("You clicked next");
-} else if (next.on("click")) {
-  nextQuestion();
-}
+//if correctOption is equal to userInput correct goes up, otherwise wrong goes up
+// if ($correctOption === UserChoice) {
+//   correct++;
+//   console.log(correct);
+// }
+// next.click(function() {
+//     .checked;
+// });
 
 //This starts and stops the quiz
 $(document).ready(function() {
 
-    //this makes the quiz start and the isntructions disappear
-    start.on("click", function() {
-        $("#gameInstructions").fadeOut(200, function() {
-            $(this).hide();
-            $("body").css("background-color", "#fff");
-            $("#gameContainer").fadeIn(200);
-            console.log("You clicked the start button!");
-        });
+  //this makes the quiz start and the isntructions disappear
+  $start.on("click", function() {
+    $("#gameInstructions").fadeOut(200, function() {
+      $(this).hide();
+      $("body").css("background-color", "#fff");
+      $("#gameContainer").fadeIn(200);
+      nextQuestion();
+      answerOptions();
+      console.log("You clicked the start button!");
     });
+  });
 
-    //Prints a question to the the paragraph inquiry
-});
+  $next.on("click", function() {
+
+    var $correctOption = $("#" + correctAnswer);
+    console.log("Correct Option: " + $correctOption);
+
+    for (i = 0; i < optionsLength; i++) {
+      var $selectedChoice = $('input:radio[id=' + i + ']:checked');
+
+      
+      //if answer is the same as the button index, the question is answered correctly, otherwise it is answered wrong
+      if ($correctOption === $selectedChoice) {
+        correct++;
+        console.log("Correct Choices: " + correct);
+        console.log("You clicked the right answer");
+      } else ($correctOption !== $selectedChoice); {
+        wrong++;
+        console.log("Wrong Answer: " + wrong);
+        console.log("You clicked the wrong answer!");
+      }
+    };
+  });
+})
